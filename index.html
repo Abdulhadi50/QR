@@ -8,6 +8,14 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <!-- Google Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&display=swap">
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-3940256099942544",  // استبدل بـ Client ID الخاص بك
+            enable_page_level_ads: true
+        });
+    </script>
     <style>
         body {
             font-family: 'Cairo', Arial, sans-serif;
@@ -69,18 +77,18 @@
             width: 100%;
             max-width: 300px;
             padding: 8px;
-            border: 2px solid #000; /* تعديل اللون */
+            border: 2px solid #000;
             border-radius: 15px;
             font-size: 16px;
             box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
             box-sizing: border-box;
             font-family: 'Cairo', Arial, sans-serif;
         }
-        
+
         #inputField:focus {
-    border-color: #862AD0; /* لون التركيز عند النقر */
-    outline: none; /* إزالة التأثير الافتراضي للتركيز */
-}
+            border-color: #862AD0;
+            outline: none;
+        }
 
         .qr-container {
             margin: 20px 0;
@@ -96,7 +104,7 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        #generateBtn {
+        #generateBtn, #downloadBtn {
             background: linear-gradient(to right, #FF12B0, #862AD0, #0E43F1);
             padding: 9px 15px;
             border: none;
@@ -105,30 +113,11 @@
             margin: 10px;
             font-size: 16px;
             transition: background-color 0.3s, transform 0.3s;
-            text-decoration: none; /* إزالة التسطير */
+            text-decoration: none;
             font-family: 'Cairo', Arial, sans-serif;
         }
 
-        #generateBtn:hover {
-            background-color: #0056b3;
-            transform: scale(1.05);
-        }
-
-        #downloadBtn {
-            background: linear-gradient(to right, #FF12B0, #862AD0, #0E43F1);
-            padding: 9px 15px;
-            border: none;
-            border-radius: 20px;
-            color: #ffffff;
-            margin: 10px;
-            font-size: 16px;
-            transition: background-color 0.3s, transform 0.3s;
-            text-decoration: none; /* إزالة التسطير */
-            font-family: 'Cairo', Arial, sans-serif;
-        }
-
-        #downloadBtn:hover {
-            background-color: #218838;
+        #generateBtn:hover, #downloadBtn:hover {
             transform: scale(1.05);
         }
 
@@ -139,17 +128,27 @@
 </head>
 <body>
     <div class="container">
-        <h1>مولد QR</h1>
-        <div class="input-group">
-            <label for="inputField">أدخل المحتوى:</label>
-            <input type="text" id="inputField" placeholder="أدخل هنا...">
-        </div>
-        <button id="generateBtn">إنشاء الباركود</button>
-        <div class="qr-container">
-            <img id="qrCode" src="" alt="QR Code">
-        </div>
-        <a id="downloadBtn" href="#" download="qr-code.png">تنزيل الباركود</a>
+    <h1>مولد QR</h1>
+    <!-- إعلان تجريبي -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-3940256099942544"
+         data-ad-slot="9190854419"
+         data-ad-format="auto"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    <div class="input-group">
+        <label for="inputField">أدخل المحتوى:</label>
+        <input type="text" id="inputField" placeholder="أدخل هنا...">
     </div>
+    <button id="generateBtn">إنشاء الباركود</button>
+    <div class="qr-container">
+        <img id="qrCode" src="" alt="QR Code">
+    </div>
+    <a id="downloadBtn" href="#" download="qr-code.png">تنزيل الباركود</a>
+</div>
+
     <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -165,9 +164,7 @@
             function updateQRCode() {
                 const inputValue = inputField.value;
 
-                let qrData = inputValue;
-
-                QRCode.toDataURL(qrData, { width: 1000, margin: 1 }, (err, url) => {
+                QRCode.toDataURL(inputValue, { width: 1000, margin: 1 }, (err, url) => {
                     if (err) {
                         console.error(err);
                         return;
